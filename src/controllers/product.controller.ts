@@ -27,16 +27,20 @@ export const getProduct= async(req:Request, res:Response): Promise<void>=>{
     };
 };
 
-export const postProduct= async (req:Request, res:Response): Promise<void>=>{
+// export const postProduct= async (req:Request, res:Response): Promise<void>=>{
 
-    try{
-        console.log("🔥 POST /api/product hit");
-        const product= await CreateProduct(req.body);
-        res.status(200).json(product)
-    }catch(error:any){
-        res.status(500).json({message:error.message});
-    };
-};
+//     try{
+//         const product= await CreateProduct(req.body);
+//         res.status(200).json(product)
+//     }catch(error:any){
+//         res.status(500).json({message:error.message});
+//     };
+// };
+export const postProduct = (res: Response, user: { name: string; quantity: number; price: number }) => {
+    // Do your DB stuff here
+    res.status(201).json({ message: 'User created', user });
+  };
+
 
 export const updateProduct= async(req:Request, res:Response): Promise<void>=>{
     try{

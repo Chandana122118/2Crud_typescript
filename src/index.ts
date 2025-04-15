@@ -11,7 +11,7 @@ app.use (express.json());
 app.use(express.urlencoded({extended:false}));
 
 app.use('/api/product',productRoute);
-
+                     
 app.get('/',(req:Request, res:Response)=>{
     res.send("Hello from Node API Updated");
 });
