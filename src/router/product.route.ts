@@ -5,7 +5,6 @@ import { validateGetProduct } from '../validators/validateGetProduct';
 
 import{
     getProducts,
-
     getProduct,
     postProduct,
     updateProduct,
