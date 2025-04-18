@@ -23,8 +23,7 @@ const getProducts = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
 exports.getProducts = getProducts;
 const getProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { id } = req.params;
-        const product = yield (0, product_service_1.findProductById)(id);
+        const product = yield (0, product_service_1.findProductById)(req.body);
         res.status(200).json(product);
     }
     catch (error) {
@@ -33,14 +32,16 @@ const getProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     ;
 });
 exports.getProduct = getProduct;
-const postProduct = (res, user) => {
-    res.status(201).json({ message: 'User created', user });
+const postProduct = (req, res) => {
+    console.log("Hello");
+    console.log(req.body);
+    const ProductData = (0, product_service_1.CreateProduct)(req.body);
+    res.status(201).json({ message: 'User created' });
 };
 exports.postProduct = postProduct;
 const updateProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { id } = req.params;
-        const { ProductData: any } = req.params;
         const Updated_product = yield (0, product_service_1.UpdateProductById)(id, req.body);
         if (!Updated_product) {
             res.status(404).json({ message: "Product not found" });
